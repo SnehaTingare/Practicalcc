@@ -22,11 +22,26 @@ class MainHandler(webapp.RequestHandler):
     def get(self):
         self.response.out.write('Hello world!')
 
+class AboutHandler(webapp.RequestHandler):
+    def get(self):
+        self.response.out.write('About Page')
+
+class LocationHandler(webapp.RequestHandler):
+    def get(self):
+        self.response.out.write('Hello nashik')
+
+
+
+
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
+    application = webapp.WSGIApplication([('/', MainHandler),
+                                          ('/about',AboutHandler),
+                                          ('/location',LocationHandler)],
                                          debug=True)
     util.run_wsgi_app(application)
+
+
 
 
 if __name__ == '__main__':
